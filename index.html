@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="theme-color" content="#eaf6f4" />
+  <title>.mp4変換</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="5" y="9" width="38" height="30" rx="8" fill="none" stroke="currentColor" stroke-width="3"/><path d="m21 17 11 7-11 7z" fill="currentColor"/></svg></div>
+      <div><p class="eyebrow">端末内で安全に変換</p><h1>.mp4変換</h1><p class="subtitle">MOV動画を、共有しやすいMP4に変換します。</p></div>
+    </header>
+
+    <section class="panel" aria-labelledby="select-title">
+      <div class="section-heading"><span class="step">1</span><div><h2 id="select-title">動画を選ぶ</h2><p>一度に最大10本。まずは短い動画でお試しください。</p></div></div>
+      <label class="pick-button" for="file-input"><span aria-hidden="true">＋</span> 動画ファイルを選択</label>
+      <input id="file-input" type="file" accept=".mov,video/quicktime,video/*" multiple />
+      <p class="hint">iPadではシステムのファイル選択画面が開きます。写真ライブラリからの選択可否は端末の設定・表示によります。</p>
+      <div id="file-warning" class="notice warning" role="status" hidden></div>
+      <div id="file-list" class="file-list" aria-live="polite"><p class="empty">まだ動画が選択されていません。</p></div>
+    </section>
+
+    <section class="panel" aria-labelledby="settings-title">
+      <div class="section-heading"><span class="step">2</span><div><h2 id="settings-title">変換設定</h2><p>容量を抑えつつ、一般的な端末で再生しやすい形式にします。</p></div></div>
+      <div class="settings-grid"><div class="setting"><span class="setting-icon">↘</span><div><strong>容量優先</strong><small>H.264 CRF 28</small></div></div><div class="setting"><span class="setting-icon">▣</span><div><strong>最大1080p</strong><small>縦横比を維持・拡大なし</small></div></div><div class="setting"><span class="setting-icon">⌂</span><div><strong>端末内処理</strong><small>サーバーへ動画を送信しません</small></div></div></div>
+      <div class="notice info"><strong>ご注意</strong><ul><li>100MBを超える動画はメモリ負荷が高くなるため警告します。250MBを超える動画は安全性を優先して受付しません。</li><li>4K・長時間動画は処理に時間がかかります。変換後の容量が小さくなるとは限りません。</li><li>HDR動画は色調を正しく保てない可能性があるため、検出できた場合は変換を中止します。</li></ul></div>
+      <div class="action-row"><button id="start-button" class="button primary" disabled>変換を開始</button><button id="cancel-button" class="button danger" hidden>変換を中止</button></div>
+      <p id="engine-status" class="status-line" role="status">変換エンジンは未読み込みです。</p>
+      <p class="hint">変換中はこの画面を開いたままにしてください。iPadでは画面ロックや別アプリへの切り替えにより処理が中断される場合があります。</p>
+    </section>
+
+    <section class="panel" aria-labelledby="results-title">
+      <div class="section-heading"><span class="step">3</span><div><h2 id="results-title">変換結果</h2><p id="summary">変換が終わると、ここに保存操作が表示されます。</p></div></div>
+      <div id="progress-area" hidden><div class="progress-caption"><span id="progress-label">準備中…</span><span id="progress-number"></span></div><progress id="progress-bar" max="100" value="0"></progress></div>
+      <div id="results-list" class="file-list"><p class="empty">結果はまだありません。</p></div>
+      <div class="action-row"><button id="clear-button" class="button secondary" disabled>変換済みデータを削除</button><button id="reset-button" class="button secondary">新しい動画を選ぶ</button></div>
+    </section>
+
+    <details class="panel details-panel"><summary>保存・プライバシー・対応環境について</summary><div class="details-content">
+      <p><strong>動画はこの端末のブラウザ内で変換され、変換用サーバーへ送信されません。保存先や共有先によっては、iCloudなどへ同期・送信される場合があります。</strong></p>
+      <p>サイトの表示や変換エンジンの取得には通信が発生します。変換済みデータはこのブラウザの一時的なメモリ内に保持され、ページを閉じる・再読み込みすると失われます。</p>
+      <p>「MP4を保存」はダウンロードを開始しますが、端末への保存完了を検知できるとは限りません。iPadでは通常、共有シートや「ファイル」への保存操作が表示されます。「共有」では対応状況により「ビデオを保存」などが選べる場合があります。</p>
+      <p>このアプリはシングルスレッド版ffmpeg.wasmを使用します。SharedArrayBufferやクロスオリジン分離を必要としませんが、iPadの機種・iPadOS・空きメモリ・動画形式によっては動作しない場合があります。</p>
+    </div></details>
+    <footer>学校内での利用を想定した試作版 · 元動画は変更・削除しません</footer>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
